@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+</head>
+<style>
+    /* Estilos do corpo e do formulário */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to bottom, #4caf50, #2196F3);
+}
+
+form {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Outros estilos personalizados, se necessário */
+
+</style>
+<script>
+    function calcularIMC() {
+    // Obter valores do formulário
+    var nome = document.getElementById('nome').value;
+    var email = document.getElementById('email').value;
+    var idade = parseInt(document.getElementById('idade').value);
+    var peso = parseFloat(document.getElementById('peso').value);
+    var altura = parseFloat(document.getElementById('altura').value);
+
+    // Validar se os valores são números
+    if (isNaN(idade) || isNaN(peso) || isNaN(altura)) {
+        alert('Por favor, insira valores válidos para idade, peso e altura.');
+        return;
+    }
+
+    // Calcular IMC
+    var imc = peso / Math.pow(altura / 100, 2);
+
+    // Exibir o resultado no elemento de resultado
+    var resultado = 'Nome: ' + nome + '<br>Email: ' + email + '<br>Idade: ' + idade + ' anos<br>Seu IMC é: ' + imc.toFixed(2);
+    document.getElementById('resultado-imc').innerHTML = resultado;
+}
+
+</script>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title has-text-centered">Formulário de Cadastro</h1>
+            <div class="columns is-centered">
+                <div class="column is-5">
+                    <form id="form">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label for="nome" class="label">Nome:</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <input type="text" id="nome" name="nome" class="input" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label for="email" class="label">Email:</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <input type="email" id="email" name="email" class="input" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label for="idade" class="label">Idade:</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <input type="number" id="idade" name="idade" class="input is-small" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label for="peso" class="label">Peso (kg):</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <input type="number" id="peso" name="peso" class="input is-small" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label for="altura" class="label">Altura (cm):</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <input type="number" id="altura" name="altura" class="input is-small" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="columns is-centered">
+                            <div class="column is-5">
+                                <div class="field is-grouped">
+                                    <div class="control has-text-centered">
+                                        <button type="button" class="button is-primary" onclick="calcularIMC()">Calcular IMC</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="resultado-imc" class="has-text-centered"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+</body>
+</html>
